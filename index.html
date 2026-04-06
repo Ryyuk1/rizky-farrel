@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nissan GT-R R34</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #0d0d0d;
+        color: white;
+        scroll-behavior: smooth;
+    }
+
+    header {
+        text-align: center;
+        padding: 30px;
+        background: black;
+        animation: fadeDown 1s ease;
+    }
+
+    header h1 {
+        color: red;
+        font-size: 40px;
+    }
+
+    nav {
+        position: sticky;
+        top: 0;
+        background: #111;
+        padding: 10px;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    nav a:hover, nav a.active {
+        color: red;
+    }
+
+    section {
+        padding: 60px;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: 1s;
+    }
+
+    section.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .hero {
+        text-align: center;
+    }
+
+    .hero img {
+        width: 80%;
+        border-radius: 10px;
+        transition: transform 0.5s;
+    }
+
+    .hero img:hover {
+        transform: scale(1.05);
+    }
+
+    .card {
+        background: #1a1a1a;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 20px red;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background: black;
+    }
+
+    /* Animasi */
+    @keyframes fadeDown {
+        from {opacity: 0; transform: translateY(-30px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    .typing {
+        border-right: 2px solid red;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+        animation: typing 4s steps(30) infinite alternate;
+    }
+
+    @keyframes typing {
+        from {width: 0}
+        to {width: 100%}
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1 class="typing">Nissan GT-R R34</h1>
+    <p>Legenda Mobil Sport Jepang</p>
+</header>
+
+<nav>
+    <a href="#about">Tentang</a>
+    <a href="#specs">Spesifikasi</a>
+    <a href="#history">Sejarah</a>
+</nav>
+
+<section class="hero">
+    <img src="gtr.jpg" alt="GTR R34">
+</section>
+
+<section id="about">
+    <div class="card">
+        <h2>Tentang</h2>
+        <p>GT-R R34 dikenal sebagai salah satu mobil paling ikonik dengan performa tinggi dan desain agresif.</p>
+    </div>
+</section>
+
+<section id="specs">
+    <div class="card">
+        <h2>Spesifikasi</h2>
+        <ul>
+            <li>RB26DETT Twin Turbo</li>
+            <li>280 HP</li>
+            <li>AWD</li>
+            <li>0-100 km/jam ±5 detik</li>
+        </ul>
+    </div>
+</section>
+
+<section id="history">
+    <div class="card">
+        <h2>Sejarah</h2>
+        <p>Diproduksi 1999–2002 dan terkenal lewat film serta game balap.</p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 GT-R R34 Website</p>
+</footer>
+
+<script>
+    const sections = document.querySelectorAll("section");
+
+    window.addEventListener("scroll", () => {
+        sections.forEach(sec => {
+            const top = sec.getBoundingClientRect().top;
+            if(top < window.innerHeight - 100){
+                sec.classList.add("show");
+            }
+        });
+    });
+
+    const navLinks = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if(pageYOffset >= sectionTop - 200){
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(a => {
+            a.classList.remove("active");
+            if(a.getAttribute("href") === "#" + current){
+                a.classList.add("active");
+            }
+        });
+    });
+    
+    window.onload = () => {
+        alert("Selamat datang di website Nissan GT-R R34 🚗🔥");
+    }
+</script>
+
+</body>
+</html>
